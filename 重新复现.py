@@ -29,8 +29,11 @@ else:
     pass
 config_path=os.path.join(homework_parent_path,"config.txt")
 print(config_path)
+invalid_chars=r'<>:"/\|?*'
 if not os.path.exists(config_path):
     new_name=input("输入你要修改的名字")
+    for char in invalid_chars:
+        new_name=new_name.replace(char,"")
     with open(config_path,"w",encoding="UTF-8") as f:
         f.write(new_name)
 else:
